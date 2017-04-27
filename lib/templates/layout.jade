@@ -1,0 +1,40 @@
+include ./mixins/common/iconTags
+include ./mixins/common/metaTags
+include ./mixins/common/navLinks
+
+doctype html
+html
+
+  //- HTML HEADER
+  head
+    +metaTags()
+    +iconTags()
+
+    link(href="/styles/site.css", rel="stylesheet")
+
+    //- Include template-specific stylesheets by extending the css block
+    block css
+
+    //- Add any other template-specific HEAD tags by extending the head block
+    block head
+
+  //- HTML BODY
+  body
+
+    //- HEADER
+    section.header
+      +navLinks()
+
+    //- BODY
+    section.body
+
+      //- The content block should contain the body of your template's content
+      block content
+
+    //- FOOTER
+    section.footer
+
+    script(src="/js/bundle.js", type="text/javascript")
+    
+    //- Include template-specific javascript files by extending the js block
+    block js

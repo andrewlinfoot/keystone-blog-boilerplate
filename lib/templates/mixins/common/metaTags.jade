@@ -1,0 +1,29 @@
+mixin metaTags()
+  //- core
+  meta(charset="utf-8")
+  meta(name="viewport", content="width=device-width, initial-scale=1.0")
+  meta(http-equiv="X-UA-Compatible" content="IE=edge")
+
+  //- seo
+  title= meta.title
+  meta(name="description" content=meta.description)
+  link(rel="canonical" href=meta.url)
+  meta(name="google-site-verification" content=meta.googleSiteVerification)
+
+  //- facebook
+  meta(property="fb:pages" content=meta.fbPageId)
+  meta(property="og:url" content=meta.url)
+  meta(property="og:title" content=meta.socialTitle)
+  meta(property="og:description" content=meta.socialDescription)
+  meta(property="og:site_name" content=meta.siteName)
+  meta(property="og:image" content=meta.image)
+  meta(property="fb:app_id" content=fbAppId)
+  meta(property="og:type" content=meta.type)
+
+  //- twitter
+  meta(name="twitter:card" content="summary_large_image")
+  meta(name="twitter:site" content=meta.twitterHandle)
+  meta(name="twitter:creator" content=meta.twitterHandle)
+  meta(name="twitter:title" content=meta.socialTitle)
+  meta(name="twitter:description" content=meta.socialDescription)
+  meta(name="twitter:image" content=meta.image)

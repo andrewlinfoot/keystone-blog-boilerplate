@@ -1,0 +1,10 @@
+extends ../layout
+
+include ../mixins/common/noPosts
+
+block content
+  if data.posts.results && data.posts.results.length > 0
+    h1
+      | Tag Page
+  else
+    +noPosts()

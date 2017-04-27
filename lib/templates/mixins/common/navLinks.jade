@@ -1,0 +1,4 @@
+mixin navLinks()
+  each link in navLinks
+    li(class=(section == link.key ? 'active' : null))
+        a(href=link.href)=link.label

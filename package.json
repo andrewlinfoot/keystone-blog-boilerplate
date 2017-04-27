@@ -1,0 +1,65 @@
+{
+  "name": "keystone-blog-boilerplate",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "async": "^2.1.5",
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "browserify-middleware": "^7.1.0",
+    "cloudinary": "^1.7.0",
+    "connect-mongo": "^1.3.2",
+    "deasync": "^0.1.9",
+    "dotenv": "^4.0.0",
+    "fast-csv": "^2.3.1",
+    "jade": "^1.11.0",
+    "jquery": "^3.2.1",
+    "keystone": "https://github.com/keystonejs/keystone.git#9806c8c83f1c6bae8fbccc219178969b198a1b27",
+    "lodash": "^4.17.4",
+    "mailgun-js": "^0.8.2",
+    "moment": "^2.17.1",
+    "newrelic": "^1.37.2",
+    "node-sass": "^4.5.0",
+    "node-sass-middleware": "^0.11.0",
+    "request": "^2.79.0",
+    "rss": "^1.2.2",
+    "s3": "^4.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.16.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.0"
+  },
+  "main": "keystone.js",
+  "engines": {
+    "node": "7.5.0",
+    "npm": "4.1.2"
+  },
+  "config": {
+    "stagingHerokuApp": "",
+    "productionHerokuApp": "",
+    "mongoHost": "",
+    "localDbName": "",
+    "prodDbName": "",
+    "prodDbUser": "",
+    "stagingDbName": "",
+    "stagingDbUser": "",
+    "stagingDbPassword": ""
+  },
+  "scripts": {
+    "start": "nodemon lib/keystone.js --exec babel-node",
+    "build": "babel lib -d dist --copy-files",
+    "serve": "node dist/keystone.js",
+    "postinstall": "npm run build",
+    "lint": "eslint .",
+    "reset": "mongo $npm_package_config_localDbName --eval \"db.dropDatabase()\"",
+    "seed-db": "npm run reset && mongorestore ./seed-data/$npm_package_config_prodDbName -d $npm_package_config_localDbName",
+    "seed-staging-db": "mongorestore --host $npm_package_config_mongoHost --drop --db $npm_package_config_stagingDbName -u $npm_package_config_stagingDbUser -p$npm_package_config_stagingDbPassword ./seed-data/$npm_package_config_prodDbName",
+    "export-prod-db": "mongodump --host $npm_package_config_mongoHost --db $npm_package_config_prodDbName --excludeCollection app_sessions -u $npm_package_config_prodDbUser -o seed-data",
+    "deploy-prod": "git push https://git.heroku.com/$npm_package_config_productionHerokuApp.git master",
+    "deploy-staging": "git push https://git.heroku.com/$npm_package_config_stagingHerokuApp.git staging:master"
+  }
+}

@@ -1,0 +1,30 @@
+# Logs
+logs
+*.log
+
+# Dependency directory
+# Deployed apps should consider commenting this line out:
+# see https://npmjs.org/doc/faq.html#Should-I-check-my-node_modules-folder-into-git
+node_modules
+
+# Ignore .env configuration files
+.env
+
+# Ignore .DS_Store files on OS X
+.DS_Store
+
+# Temp directory used for ImageCache uploads
+temp
+
+# Sublime workspace/project
+*.sublime-workspace
+*.sublime-project
+
+# Babel build directory
+dist
+
+# Local only dev notes
+.scratch-pad
+
+# Generated css from sass middleware
+/lib/public/styles/site.css
